@@ -1,9 +1,10 @@
-package uber.com.br.androiduberclone.Retrofit;
+package uber.com.br.androiduberclone.Remote;
 
 import retrofit2.Retrofit;
-import retrofit2.converter.scalars.ScalarsConverterFactory;
+import retrofit2.converter.gson.GsonConverterFactory;
 
-public class RetrofitClient {
+public class FCMClient {
+
     private static Retrofit retrofit = null;
 
     public static Retrofit getClient(String baseURL) {
@@ -11,7 +12,7 @@ public class RetrofitClient {
         if (retrofit == null) {
             retrofit = new Retrofit.Builder()
                     .baseUrl(baseURL)
-                    .addConverterFactory(ScalarsConverterFactory.create())
+                    .addConverterFactory(GsonConverterFactory.create())
                     .build();
         }
 

@@ -1,4 +1,4 @@
-package uber.com.br.androiduberclone.Retrofit;
+package uber.com.br.androiduberclone.Remote;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
