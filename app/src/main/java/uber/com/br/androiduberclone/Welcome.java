@@ -474,6 +474,7 @@ public class Welcome extends FragmentActivity implements OnMapReadyCallback,
                             mCurrent.remove(); // Remove already marker
                         }
                         mCurrent = mMap.addMarker(new MarkerOptions()
+                                .icon(BitmapDescriptorFactory.fromResource(R.drawable.car))
                                 .position(new LatLng(latitude, longitude))
                                 .title("You Location"));
 
