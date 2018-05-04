@@ -187,7 +187,7 @@ public class Welcome extends FragmentActivity implements OnMapReadyCallback,
                     stopLocationUpdates();
                     mCurrent.remove();
                     mMap.clear();
-                    //handler.removeCallbacks(drawPathRunnable);
+                    handler.removeCallbacks(drawPathRunnable);
                     Snackbar.make(mapFragment.getView(), "You are offline", Snackbar.LENGTH_SHORT)
                             .show();
                 }
@@ -334,6 +334,7 @@ public class Welcome extends FragmentActivity implements OnMapReadyCallback,
                 @Override
                 public void onFailure(Call<String> call, Throwable t) {
                     Toast.makeText(Welcome.this, "" + t.getMessage(), Toast.LENGTH_SHORT).show();
+                    t.printStackTrace();
                 }
             });
 
