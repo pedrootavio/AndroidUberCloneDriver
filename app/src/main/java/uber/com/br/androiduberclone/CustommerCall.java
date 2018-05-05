@@ -1,6 +1,7 @@
 package uber.com.br.androiduberclone;
 
 import android.animation.ValueAnimator;
+import android.content.Intent;
 import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -53,6 +54,8 @@ public class CustommerCall extends AppCompatActivity {
 
     String customerId;
 
+    double lat, lng;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,13 +81,26 @@ public class CustommerCall extends AppCompatActivity {
             }
         });
 
+        btnAccept.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(CustommerCall.this, DriverTracking.class);
+                //Send customer location to new activity.
+                intent.putExtra("lat", lat);
+                intent.putExtra("lng", lng);
+
+                startActivity(intent);
+                finish();
+            }
+        });
+
         mediaPlayer = MediaPlayer.create(this, R.raw.ringtone);
         mediaPlayer.setLooping(true);
         mediaPlayer.start();
 
         if (getIntent() != null) {
-            double lat = getIntent().getDoubleExtra("lat", -1.0);
-            double lng = getIntent().getDoubleExtra("lng", -1.0);
+            lat = getIntent().getDoubleExtra("lat", -1.0);
+            lng = getIntent().getDoubleExtra("lng", -1.0);
             customerId = getIntent().getStringExtra("customer");
 
             getDirection(lat, lng);
